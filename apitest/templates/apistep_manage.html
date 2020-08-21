@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+
+{% block title %}自动化测试平台{% endblock %}
+
+
+{% block main %}
+    <div class="row" style="padding-top: 20px">
+        <div class="col-md-11">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>所属产品</th>
+                    <th>所属用例</th>
+                    <th>步骤</th>
+                    <th>URL地址</th>
+                    <th>参数=值</th>
+                    <th>方法</th>
+                    <th>预期结果</th>
+                    <th>测试结果</th>
+                    <th>执行时间</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for apistep in apisteps %}
+                    <tr>
+                        <td>{{ apistep.ApiTest.Product.product_name }}</td>
+                        <td>case{{ apistep.ApiTest.id }}:{{ apistep.ApiTest.apitest_name }}</td>
+                        <td>{{ apistep.api_step }}:{{ apistep.api_name }}</td>
+                        <td>{{ apistep.api_url }}</td>
+                        <td>{{ apistep.api_param }}</td>
+                        <td>{{ apistep.api_method }}</td>
+                        <td>{{ apistep.api_result }}</td>
+                        <td>
+                            {% if apistep.api_result == 1 %}
+                                <a style="color: green">{{ apistep.api_status }}</a>
+                            {% else %}
+                                <a style="color: red">{{ apistep.api_status }}</a>
+                            {% endif %}
+                        </td>
+                        <td>{{ apistep.create_time }}</td>
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

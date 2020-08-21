@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+
+{% block title %}自动化测试平台{% endblock %}
+
+
+{% block main %}
+    <div class="row" style="padding-top: 20px">
+        <div class="col-md-11">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>产品名称</th>
+                    <th>产品描述</th>
+                    <th>产品负责人</th>
+                    <th>创建时间</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for product in products %}
+                    <tr>
+                        <td>{{ product.id }}</td>
+                        <td>{{ product.product_name }}</td>
+                        <td>{{ product.product_desc }}</td>
+                        <td>{{ product.product_owner }}</td>
+                        <td>{{ product.create_time }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

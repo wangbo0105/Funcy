@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}自动化测试平台{% endblock %}
+
+
+{% block main %}
+    <div class="row" style="padding-top: 20px">
+        <div class="col-md-11">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>产品</th>
+                    <th>流程接口测试用例名称</th>
+                    <th>流程接口描述</th>
+                    <th>测试负责人</th>
+                    <th>测试结果</th>
+                    <th>创建时间</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for apitest in apitests %}
+                    <tr>
+                        <td>{{ apitest.id }}</td>
+                        <td>{{ apitest.Product.product_desc }}</td>
+                        <td>{{ apitest.apitest_name }}</td>
+                        <td>{{ apitest.apitest_desc }}</td>
+                        <td>{{ apitest.apitest_owner }}</td>
+                        <td>{{ apitest.apitest_result }}</td>
+                        <td>{{ apitest.create_time }}</td>
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

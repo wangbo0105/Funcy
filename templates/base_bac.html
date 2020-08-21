@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content>
+    <meta name="author" content="bo wang">
+    <title>{% block title %}测试平台{% endblock %}</title>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{% static "bootstrap/dist/css/bootstrap.min.css" %}">
+    <!-- Fav icons -->
+    <link rel="icon" href="{% static 'images/logo.svg' %}">
+</head>
+<body>
+<!--顶部导航条-->
+{% block navbar %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/index/">
+            <img src="{% static 'images/logo.svg' %}" width="28" height="28" class="d-inline-block align-top" alt="">自动化测试平台</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/index/">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/product/">Product</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/product/">UI-Test</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">API-Test</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/api/test/">API-TEST</a>
+                        <a class="dropdown-item" href="/api/step">API-STEP</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/device/">Device</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/product/">Document</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            <div class="btn-group ml-lg-auto" role="group" aria-label="Basic example">
+                <a role="button" class="btn btn-outline-info" href="/admin/">{{ user }}</a>
+                <a role="button" class="btn btn-outline-info" href="/logout/">退出</a>
+            </div>
+        </div>
+    </nav>
+
+{% endblock %}
+<!--侧边栏内容-->
+{% block sidebar %}
+{% endblock %}
+
+<!--主体内容-->
+{% block main %}
+{% endblock %}
+
+<!--底部内容-->
+{% block footer %}
+{% endblock %}
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="{% static "jquery/dist/jquery.slim.min.js" %}"></script>
+<script src="{% static "@popperjs/core/dist/umd/popper.min.js" %}"></script>
+<script src="{% static "bootstrap/dist/js/bootstrap.min.js" %}"></script>
+</body>
+</html>
