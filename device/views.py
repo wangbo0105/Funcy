@@ -9,4 +9,4 @@ from .models import Device
 def device(request):
     device_list = Device.objects.all()
     username = request.session.get('user', '')
-    return render(request, "device.html", {"user": username, "device_list": device_list})
+    return render(request, "device/device.html", {"user": username, "device_list": device_list})

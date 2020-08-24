@@ -17,17 +17,17 @@ def login(request):
             response = HttpResponseRedirect('/')
             return response
         else:
-            return render(request, 'login.html', {'error_msg': 'username or password error!'})
-    return render(request, 'login.html')
+            return render(request, 'autotest/login.html', {'error_msg': 'username or password error!'})
+    return render(request, 'autotest/login.html')
 
 
 def index(request):
     username = request.session.get('user')
     # 未登录用户跳转登录页
     if username is None:
-        return render(request, 'login.html')
+        return render(request, 'autotest/login.html')
     else:
-        return render(request, "index.html")
+        return render(request, "autotest/index.html")
 
 
 def logout(request):
