@@ -25,7 +25,7 @@ SECRET_KEY = 'ksi8i3)l)=t*y0z-9i+8hq)x#8ut)b(dgu+wi7+1u0if$w703$'
 DEBUG = False
 
 ALLOWED_HOSTS = ['0.0.0.0:8000', 'localhost', '118.190.26.153', '127.0.0.1', '172.18.16.27']
-
+# ALLOWED_HOSTS = ['172.18.16.27']
 # Application definition
 
 INSTALLED_APPS = [
@@ -58,7 +58,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'templates')],
-        'APP_DIRS': False,
+        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
