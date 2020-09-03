@@ -1,5 +1,12 @@
 # 测开平台
 
+## bootstrap设置
+```npm
+npm install bootstrap@4.5.0
+npm install jquery@3.5.1
+npm install popper.js@1.16.0
+```
+
 ## settings配置
 
 ```pythonregexp
@@ -32,14 +39,15 @@ STATICFILES_DIRS = [
 ```
 
 ## 部署流程
+1. 安装 Nginx  
+`yum install nginx`
+2. 安装 uwsgi  
+`pip3 install uwsgi`
+3. 本地运行django[非Debug]  
+`python3 manage.py runserver 0.0.0.0:8000 --insecure`
+4. 服务端部署【暂时】
+```bash
+uwsgi -d --ini uwsgi.ini
 
-- 安装nginx
-
-`
-yum install nginx
-`
-- 安装uwsgi
-
-`
-pip3 install uwsgi
-`
+nginx -s reload
+```
