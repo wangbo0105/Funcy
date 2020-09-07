@@ -63,10 +63,8 @@
                     <td class="align-top w-25">测试版本</td>
                     <td class="align-top w-25">
                         <select class="custom-select d-inline">
-                            <option selected>Open this select menu</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            <option selected value="1">线上版</option>
+                            <option value="2">体验版</option>
                         </select></td>
                 </tr>
                 </tbody>
@@ -110,8 +108,9 @@
                     <td>{{ history.build_time }}</td>
                     <td>{{ history.report_file.url }}</td>
                     <td>
-                        <a class="btn btn-sm btn-outline-info" href="/media/{{ history.report_file}}" target="_blank">预览</a>
-                        <a class="btn btn-sm btn-outline-info" href="#">下载</a>
+                        <a class="btn btn-sm btn-outline-info" href="/media/{{ history.report_file }}" target="_blank">预览</a>
+                        <a class="btn btn-sm btn-outline-info"
+                           href="/automation/ui/{{ uia_item.id }}/download/{{ history.id }}">下载</a>
                     </td>
                 </tr>
             {% endfor %}

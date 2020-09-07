@@ -4,11 +4,11 @@
 # @Author   : wangbo
 
 
-from django.urls import path
+from django.urls import path, re_path
 from automation import views
 
 urlpatterns = [
     path('ui/', views.ui_automation_list, name="list"),
     path('ui/<int:ui_id>/', views.ui_automation_detail, name="detail"),
-    path('ui/<int:ui_id>/report/mini/ui/<str:report_id>', views.mini_ui_automation_result, name="report")
+    path('ui/<int:ui_id>/download/<int:report_id>/', views.report_down, name="download"),
 ]
