@@ -54,6 +54,9 @@ python3 manage.py runserver 0.0.0.0:8000 --insecure
 ```
 4\. 服务端部署【暂时】
 ```bash
+
+sudo fuser -k 8000/tcp
+
 uwsgi -d --ini uwsgi.ini
 
 nginx -s reload
