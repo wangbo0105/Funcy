@@ -1,14 +1,18 @@
-* {
-    padding: 0;
-    margin: 0;
-}
+/** {*/
+/*    padding: 0;*/
+/*    margin: 0;*/
+/*}*/
 
-.sidebar {
-    position: fixed;
-    width: 200px;
-    height: 100%;
-    border: #0f6674 1px solid;
-}
-.bread{
-    margin-left: 200px;
+/*.sidebar {*/
+/*    position: fixed;*/
+/*    width: 200px;*/
+/*    height: 100%;*/
+/*    border: #0f6674 1px solid;*/
+/*}*/
+
+/*.bread {*/
+/*    margin-left: 200px;*/
+/*}*/
+.u-point-desc {
+    font-size: 14px;
 }

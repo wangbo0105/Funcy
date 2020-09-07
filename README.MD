@@ -39,13 +39,20 @@ STATICFILES_DIRS = [
 ```
 
 ## 部署流程
-1. 安装 Nginx  
-`yum install nginx`
-2. 安装 uwsgi  
-`pip3 install uwsgi`
-3. 本地运行django[非Debug]  
-`python3 manage.py runserver 0.0.0.0:8000 --insecure`
-4. 服务端部署【暂时】
+1. 安装 Nginx
+```bash
+yum install nginx
+```
+2\. 安装 uwsgi
+```bash
+pip3 install uwsgi
+```
+3\. 本地运行django
+
+```bash
+python3 manage.py runserver 0.0.0.0:8000 --insecure
+```
+4\. 服务端部署【暂时】
 ```bash
 uwsgi -d --ini uwsgi.ini
 

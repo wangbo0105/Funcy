@@ -13,39 +13,40 @@
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <!-- Fav icons -->
     <link rel="icon" href="{% static 'images/logo.svg' %}">
-    <link rel="stylesheet" href="{% static '/css/login.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
 </head>
-<body class="text-center">
-<form class="form-signin" action="/login/" method="post">
-    {% csrf_token %}
+<body>
+<div class="text-center" id="main-login">
+    <form class="form-signin" action="/login/" method="post">
+        {% csrf_token %}
 
-    <!-- 用户名密码错误提示-->
-    {% if error_msg %}
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            {{ error_msg }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
+        <!-- 用户名密码错误提示-->
+        {% if error_msg %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                {{ error_msg }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endif %}
+        <img class="mb-4" src="{% static 'images/logo.svg' %}" alt width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        <label for="inputUser" class="sr-only">User name</label>
+        <input type="text" id="inputUser" class="form-control" placeholder="Username" name="username" required
+               autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" value="remember-me">
+                Remember me
+            </label>
         </div>
-    {% endif %}
-    <img class="mb-4" src="{% static 'images/logo.svg' %}" alt width="72" height="72">
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputUser" class="sr-only">User name</label>
-    <input type="text" id="inputUser" class="form-control" placeholder="Username" name="username" required autofocus>
-    <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
-    <div class="checkbox mb-3">
-        <label>
-            <input type="checkbox" value="remember-me">
-            Remember me
-        </label>
-    </div>
-    <button class="btn btn-lg btn-info btn-block" type="submit">Sign in</button>
-    <p class="mt-5 mb-3 text-muted">Dont have account? Please contact the administrator to activate</p>
-    <p class="mt-5 mb-3 text-muted">© 2020</p>
-
-
-</form>
+        <button class="btn btn-lg btn-info btn-block" type="submit">Sign in</button>
+        <p class="mt-5 mb-3 text-muted">Dont have account? Please contact the administrator to activate</p>
+        <p class="mt-5 mb-3 text-muted">© 2020</p>
+    </form>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>

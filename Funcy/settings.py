@@ -22,10 +22,11 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 SECRET_KEY = 'ksi8i3)l)=t*y0z-9i+8hq)x#8ut)b(dgu+wi7+1u0if$w703$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
+ALLOWED_HOSTS = []
 
-# ALLOWED_HOSTS = ['0.0.0.0:8000', 'localhost', '118.190.26.153', '127.0.0.1', '172.18.16.27']
-ALLOWED_HOSTS = ['*']
+# DEBUG = False
+# ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
@@ -39,7 +40,7 @@ INSTALLED_APPS = [
     'product.apps.ProductConfig',
     'apitest.apps.ApitestConfig',
     'device.apps.DeviceConfig',
-    'ui_automation.apps.UiAutomationConfig',
+    'automation.apps.AutomationConfig',
 ]
 
 MIDDLEWARE = [
@@ -128,13 +129,22 @@ USE_L10N = True
 
 USE_TZ = True
 
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
 
+# push必须
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, '/static/'),
 )
+
+# push需注释
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, 'static'),
+# )
