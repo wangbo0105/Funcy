@@ -31,7 +31,7 @@ class MiniAutomationResult(models.Model):
         ('2', '失败'),
     )
     build_result = models.CharField(max_length=1, choices=RESULT_CHOICES)
-    report_file = models.FileField(upload_to='report/mini/ui/')
+    report_file = models.FileField(upload_to='report/mini/ui/', null=True)
     create_time = models.DateTimeField('添加时间', auto_now=True)
 
     class Meta:
