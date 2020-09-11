@@ -1,13 +1,16 @@
 import os
 
-from django.http import FileResponse, HttpResponse, StreamingHttpResponse
-from django.shortcuts import render
+from django.http import FileResponse, HttpResponse, StreamingHttpResponse, HttpResponseRedirect
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from Funcy.settings import MEDIA_ROOT
+from common import local_jenkins
 
 # Create your views here.
 
 from .models import UIAutomation, MiniAutomationResult
+
+JENKINS_TOKEN = '112923e266381d424079937e8908294227'
 
 
 @login_required()
@@ -22,16 +25,31 @@ def ui_automation_detail(request, ui_id):
     uia_item = UIAutomation.objects.get(pk=ui_id)
     history_item = MiniAutomationResult.objects.all()
     username = request.session.get('user', '')
+    build_item = local_jenkins.get_build_para(uia_item.job_name)
     return render(request, "automation/ui_automation_detail.html",
-                  {"user": username, "uia_item": uia_item, "history_item": history_item})
+                  {"user": username, "uia_item": uia_item, "history_item": history_item, "build_item": build_item})
+
+
+@login_required()
+def build(request, ui_id):
+    if request.POST:
+        uia_item = UIAutomation.objects.get(pk=ui_id)
+        build_item = local_jenkins.get_build_para(uia_item.job_name)
+        build_args = {}
+        for item in build_item:
+            build_args[item] = request.POST.get(item)
+        local_jenkins.start_build(uia_item.job_name, build_args)
+        print(local_jenkins.get_last_build_number(uia_item.job_name))
+        return redirect("/automation/ui/" + str(ui_id))
 
 
 @login_required()
 def report_down(request, ui_id, report_id):
     """
     下载压缩文件
+    :param ui_id:
+    :param report_id:
     :param request:
-    :param id: 数据库id
     :return:
     """
     file_name = str(MiniAutomationResult.objects.get(pk=report_id).report_file)

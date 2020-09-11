@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
 
-{% block title %}UI自动化{% endblock %}
+{% block title %}{{ uia_item.uia_name }}{% endblock %}
 {% block main %}
-    <main role="main" class="col ml-sm-auto px-md-4">
-        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <main role="main" class="mx-4">
+        <!--面包屑导航-->
+        <div class="d-flex justify-content-start align-items-center py-2">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/">Home</a></li>
@@ -12,109 +13,138 @@
                 </ol>
             </nav>
         </div>
-        <div class="d-flex p-2">
-            <svg t="1599450149658" class="icon" viewBox="0 0 1024 1024" version="1.1"
-                 xmlns="http://www.w3.org/2000/svg" p-id="1779" width="24" height="24">
-                <path d="M737.148 541.92h-256.85V286.073c0-17.673-14.327-32-32-32h-288.85c-17.673 0-32 14.327-32 32v576.698c0 17.673 14.327 32 32 32h577.7c17.673 0 32-14.327 32-32V573.92c0-17.673-14.327-32-32-32z m-320.85-223.847V541.92h-224.85V318.073h224.85z m-224.85 288.85h224.85v223.848h-224.85V606.923z m513.7 223.848h-224.85V605.92h224.85v224.851z"
-                      fill="" p-id="1780"></path>
-                <path d="M843.523 146.698h-280c-17.132 0-31.02 13.888-31.02 31.02v280c0 17.132 13.888 31.02 31.02 31.02h280c17.132 0 31.02-13.888 31.02-31.02v-280c0-17.132-13.888-31.02-31.02-31.02z m-31.019 280H594.543V208.737h217.961v217.961z"
-                      fill="" p-id="1781"></path>
-                <path d="M671.523 285.718h64v64h-64z" fill="" p-id="1782"></path>
-            </svg>
-            <span class="ml-2">项目信息</span>
-        </div>
-        <div class="d-flex flex-column p-2">
-            <div>
-                <div class="p-2 d-inline-block">项目ID</div>
-                <div class="p-2 d-inline-block">{{ uia_item.id }}</div>
+        <div class="row">
+            <!--项目信息-->
+            <div class="col mb-4">
+                <div class="d-flex mb-2">
+                    <svg t="1599450149658" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                         xmlns="http://www.w3.org/2000/svg" p-id="1779" width="24" height="24">
+                        <path d="M737.148 541.92h-256.85V286.073c0-17.673-14.327-32-32-32h-288.85c-17.673 0-32 14.327-32 32v576.698c0 17.673 14.327 32 32 32h577.7c17.673 0 32-14.327 32-32V573.92c0-17.673-14.327-32-32-32z m-320.85-223.847V541.92h-224.85V318.073h224.85z m-224.85 288.85h224.85v223.848h-224.85V606.923z m513.7 223.848h-224.85V605.92h224.85v224.851z"
+                              fill="" p-id="1780"></path>
+                        <path d="M843.523 146.698h-280c-17.132 0-31.02 13.888-31.02 31.02v280c0 17.132 13.888 31.02 31.02 31.02h280c17.132 0 31.02-13.888 31.02-31.02v-280c0-17.132-13.888-31.02-31.02-31.02z m-31.019 280H594.543V208.737h217.961v217.961z"
+                              fill="" p-id="1781"></path>
+                        <path d="M671.523 285.718h64v64h-64z" fill="" p-id="1782"></path>
+                    </svg>
+                    <span class="ml-2">项目信息</span>
+                </div>
+                <div class="d-flex flex-column">
+                    <div class="d-flex flex-row py-2 pl-3">
+                        <div class="w-25">项目ID</div>
+                        <div>{{ uia_item.id }}</div>
+                    </div>
+                    <div class="d-flex flex-row py-2 pl-3">
+                        <div class="w-25">项目名称</div>
+                        <div>{{ uia_item.uia_name }}</div>
+                    </div>
+                    <div class="d-flex flex-row py-2 pl-3">
+                        <div class="w-25">项目仓库</div>
+                        <div><a href="{{ uia_item.git_url }}"
+                                target="_blank"> {{ uia_item.git_name }}</a></div>
+                    </div>
+                    <div class="d-flex flex-row py-2 pl-3">
+                        <div class="w-25">Job名称</div>
+                        <div><a href="{{ uia_item.job_url }}"
+                                target="_blank"> {{ uia_item.job_name }}</a></div>
+                    </div>
+                    <div class="d-flex flex-row py-2 pl-3">
+                        <div class="w-25">项目负责人</div>
+                        <div>{{ uia_item.uia_owner }}</div>
+                    </div>
+                    <div class="d-flex flex-row py-2 pl-3">
+                        <div class="w-25">项目添加时间</div>
+                        <div>{{ uia_item.create_time }}</div>
+                    </div>
+                </div>
             </div>
-            <div class="">
-                <div class="p-2 d-inline-block">项目名称</div>
-                <div class="p-2 d-inline-block">{{ uia_item.uia_name }}</div>
-            </div>
-            <div class="">
-                <div class="p-2 d-inline-block">项目仓库</div>
-                <div class="p-2 d-inline-block"><a href="{{ uia_item.git_url }}"> {{ uia_item.git_name }}</a></div>
-            </div>
-            <div class="">
-                <div class="p-2 d-inline-block">项目负责人</div>
-                <div class="p-2 d-inline-block">{{ uia_item.uia_owner }}</div>
-            </div>
-            <div class="">
-                <div class="p-2 d-inline-block">项目添加时间</div>
-                <div class="p-2 d-inline-block">{{ uia_item.create_time }}</div>
-            </div>
-        </div>
-        <div class="d-flex p-2">
-            <svg t="1599460138010" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                 p-id="2225" width="24" height="24">
-                <path d="M736.232934 118.192202h-448.922521L62.848129 506.970675 287.309389 895.749148h448.922521l224.46126-388.778473L736.232934 118.192202zM714.634073 858.33945H308.90825l-202.862399-351.368775L308.909274 155.602924h405.725823l202.862399 351.368775L714.634073 858.33945z"
-                      fill="" p-id="2226"></path>
-                <path d="M322.379509 442.587742l59.64644 95.875598h0.400339V442.587742h29.423393v142.911866h-31.424065l-59.446782-95.674916h-0.400339v95.674916H291.155103V442.587742h31.224406zM546.354424 442.587742v26.420337h-75.459324v30.62441h69.254579v24.419665h-69.254579v35.027117h77.060681v26.421361H439.471035V442.587742h106.883389zM674.053402 585.499608l-24.21796-97.276273h-0.401363l-23.818644 97.276273h-31.825427L555.96154 442.587742h31.424065l22.617627 97.276273h0.400339l24.820004-97.276273h29.422369l24.419665 98.477291h0.400339l23.418305-98.477291h30.824068l-38.430512 142.911866h-31.224407z"
-                      fill="" p-id="2227"></path>
-            </svg>
-            <span class="ml-2">构建</span>
-        </div>
+            <!--项目构建-->
+            <div class="col mb-4">
+                <div class="d-flex mb-2">
+                    <svg t="1599460138010" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                         xmlns="http://www.w3.org/2000/svg"
+                         p-id="2225" width="24" height="24">
+                        <path d="M736.232934 118.192202h-448.922521L62.848129 506.970675 287.309389 895.749148h448.922521l224.46126-388.778473L736.232934 118.192202zM714.634073 858.33945H308.90825l-202.862399-351.368775L308.909274 155.602924h405.725823l202.862399 351.368775L714.634073 858.33945z"
+                              fill="" p-id="2226"></path>
+                        <path d="M322.379509 442.587742l59.64644 95.875598h0.400339V442.587742h29.423393v142.911866h-31.424065l-59.446782-95.674916h-0.400339v95.674916H291.155103V442.587742h31.224406zM546.354424 442.587742v26.420337h-75.459324v30.62441h69.254579v24.419665h-69.254579v35.027117h77.060681v26.421361H439.471035V442.587742h106.883389zM674.053402 585.499608l-24.21796-97.276273h-0.401363l-23.818644 97.276273h-31.825427L555.96154 442.587742h31.424065l22.617627 97.276273h0.400339l24.820004-97.276273h29.422369l24.419665 98.477291h0.400339l23.418305-98.477291h30.824068l-38.430512 142.911866h-31.224407z"
+                              fill="" p-id="2227"></path>
+                    </svg>
+                    <span class="ml-2">构建</span>
+                </div>
+                <div>
+                    <form action="/automation/ui/{{ uia_item.id }}/build" method="post">
+                        {% csrf_token %}
 
-        <form>
-            <table class="table table-striped table-light">
-                <tbody>
-                <tr>
-                    <td class="align-top w-25">测试版本</td>
-                    <td class="align-top w-25">
-                        <select class="custom-select d-inline">
-                            <option selected value="1">线上版</option>
-                            <option value="2">体验版</option>
-                        </select></td>
-                </tr>
-                </tbody>
-            </table>
-        </form>
-        <div class="d-flex p-2">
-            <svg t="1599459813251" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                 p-id="2077" width="24" height="24">
-                <path d="M511.998 64C264.574 64 64 264.574 64 511.998S264.574 960 511.998 960 960 759.422 960 511.998 759.422 64 511.998 64z m353.851 597.438c-82.215 194.648-306.657 285.794-501.306 203.579S78.749 558.36 160.964 363.711 467.621 77.917 662.27 160.132c168.009 70.963 262.57 250.652 225.926 429.313a383.995 383.995 0 0 1-22.347 71.993z"
-                      fill="#666666" p-id="2078"></path>
-                <path d="M543.311 498.639V256.121c0-17.657-14.314-31.97-31.97-31.97s-31.97 14.314-31.97 31.97v269.005l201.481 201.481c12.485 12.485 32.728 12.485 45.213 0s12.485-32.728 0-45.213L543.311 498.639z"
-                      fill="#666666" p-id="2079"></path>
-            </svg>
-            <span class="ml-2">构建记录</span>
+                        {% for key, value in build_item.items %}
+                            <div class="form-group row">
+                                <label class="col-2 col-form-label" for="{{ key }}">{{ key }}</label>
+                                <div class="col-sm-10">
+                                    {% if value == None %}
+                                        <input type="text" class="form-control" id="{{ key }}" name="{{ key }}"
+                                               required>
+                                    {% else %}
+                                        <select class="custom-select d-inline" id="{{ key }}" name="{{ key }}" required>
+                                            {% for sub_value in value %}
+                                                <option id="{{ sub_value }}">{{ sub_value }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                        <button class="btn btn-info btn-sm" type="submit">构建</button>
+                    </form>
+                </div>
+            </div>
+            <!--历史记录-->
+            <div class="col-12">
+                <div class="d-flex">
+                    <svg t="1599459813251" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                         xmlns="http://www.w3.org/2000/svg"
+                         p-id="2077" width="24" height="24">
+                        <path d="M511.998 64C264.574 64 64 264.574 64 511.998S264.574 960 511.998 960 960 759.422 960 511.998 759.422 64 511.998 64z m353.851 597.438c-82.215 194.648-306.657 285.794-501.306 203.579S78.749 558.36 160.964 363.711 467.621 77.917 662.27 160.132c168.009 70.963 262.57 250.652 225.926 429.313a383.995 383.995 0 0 1-22.347 71.993z"
+                              fill="#666666" p-id="2078"></path>
+                        <path d="M543.311 498.639V256.121c0-17.657-14.314-31.97-31.97-31.97s-31.97 14.314-31.97 31.97v269.005l201.481 201.481c12.485 12.485 32.728 12.485 45.213 0s12.485-32.728 0-45.213L543.311 498.639z"
+                              fill="#666666" p-id="2079"></path>
+                    </svg>
+                    <span class="ml-2">构建记录</span>
+                </div>
+                <table class="table table-striped table-light">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">构建版本</th>
+                        <th scope="col">用例数量</th>
+                        <th scope="col">失败数量</th>
+                        <th scope="col">构建结果</th>
+                        <th scope="col">构建时间</th>
+                        <th scope="col">报告</th>
+                        <th scope="col">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for history in history_item %}
+                        <tr>
+                            <th>{{ history.id }}</th>
+                            <td>{{ history.build_version }}</td>
+                            <td>{{ history.case_num }}</td>
+                            <td>{{ history.fail_num }}</td>
+                            {% if history.build_result == '1' %}
+                                <td><span class="btn btn-success btn-sm">通过</span></td>
+                            {% else %}
+                                <td><span class="btn btn-danger btn-sm">失败</span></td>
+                            {% endif %}
+                            <td>{{ history.build_time }}</td>
+                            <td>{{ history.report_file.url }}</td>
+                            <td>
+                                <a class="btn btn-sm btn-outline-info" href="/media/{{ history.report_file }}"
+                                   target="_blank">预览</a>
+                                <a class="btn btn-sm btn-outline-info"
+                                   href="/automation/ui/{{ uia_item.id }}/download/{{ history.id }}">下载</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <table class="table table-striped table-light">
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">构建版本</th>
-                <th scope="col">用例数量</th>
-                <th scope="col">失败数量</th>
-                <th scope="col">构建结果</th>
-                <th scope="col">构建时间</th>
-                <th scope="col">报告</th>
-                <th scope="col">操作</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for history in history_item %}
-                <tr>
-                    <th>{{ history.id }}</th>
-                    <td>{{ history.build_version }}</td>
-                    <td>{{ history.case_num }}</td>
-                    <td>{{ history.fail_num }}</td>
-                    {% if history.build_result == '1' %}
-                        <td><span class="btn btn-success btn-sm">通过</span></td>
-                    {% else %}
-                        <td><span class="btn btn-danger btn-sm">失败</span></td>
-                    {% endif %}
-                    <td>{{ history.build_time }}</td>
-                    <td>{{ history.report_file.url }}</td>
-                    <td>
-                        <a class="btn btn-sm btn-outline-info" href="/media/{{ history.report_file }}" target="_blank">预览</a>
-                        <a class="btn btn-sm btn-outline-info"
-                           href="/automation/ui/{{ uia_item.id }}/download/{{ history.id }}">下载</a>
-                    </td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
     </main>
 {% endblock %}

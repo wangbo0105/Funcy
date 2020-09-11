@@ -9,33 +9,20 @@ npm install popper.js@1.16.0
 
 ## settings配置
 
-```pythonregexp
+```python
 
 DEBUG = False
-
 ALLOWED_HOSTS = ['*']
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': '$name',
-        'USER': '$user',
-        'PASSWORD': '$pwd',
-        'HOST': 'localhost',
-        'PORT': 3306,
-    }
-}
-
-# Internationalization
 LANGUAGE_CODE = 'zh-Hans'
 TIME_ZONE = 'Asia/Shanghai'
 
-# static
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, '/static/')
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
-]
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, '/static/'),
+# )
 ```
 
 ## 部署流程

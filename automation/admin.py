@@ -12,7 +12,7 @@ admin.site.register(UIAutomation, UIAutomationAdmin)
 
 
 class MiniAutomationResultAdmin(admin.ModelAdmin):
-    list_display = ['id', 'mini_pro', 'build_version', 'build_time', 'case_num', 'fail_num', 'build_result']
+    list_display = ['id', 'mini_pro', 'build_version', 'build_time', 'build_result']
 
 
 admin.site.register(MiniAutomationResult, MiniAutomationResultAdmin)
