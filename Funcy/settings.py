@@ -133,20 +133,20 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATIC_URL = '/static/'
 
 # 部署必须
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-#
-# STATICFILES_DIRS = (
-#     os.path.join(BASE_DIR, '/static/'),
-# )
-#
-# DEBUG = False
-# ALLOWED_HOSTS = ['*']
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, '/static/'),
+)
+
+DEBUG = False
+ALLOWED_HOSTS = ['*']
 
 ###############################
 
-DEBUG = True
-ALLOWED_HOSTS = []
-
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
+# DEBUG = True
+# ALLOWED_HOSTS = []
+#
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, 'static'),
+# )
