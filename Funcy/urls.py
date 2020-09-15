@@ -31,4 +31,5 @@ urlpatterns = [
     path('api/', include('apitest.urls')),
     path('device/', include('device.urls')),
     path('automation/', include('automation.urls')),
+    path('ex/', include('ex_project.urls')),
 ]

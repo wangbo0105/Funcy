@@ -11,4 +11,6 @@ urlpatterns = [
     path('ui/', views.ui_automation_list, name="list"),
     path('ui/<int:ui_id>/', views.ui_automation_detail, name="detail"),
     path('ui/<int:ui_id>/download/<int:report_id>/', views.report_down, name="download"),
+    path('ui/<int:ui_id>/build', views.build, name="build"),
+
 ]

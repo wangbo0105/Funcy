@@ -21,12 +21,6 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'ksi8i3)l)=t*y0z-9i+8hq)x#8ut)b(dgu+wi7+1u0if$w703$'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
-# ALLOWED_HOSTS = []
-
-DEBUG = False
-ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
@@ -41,6 +35,7 @@ INSTALLED_APPS = [
     'apitest.apps.ApitestConfig',
     'device.apps.DeviceConfig',
     'automation.apps.AutomationConfig',
+    'ex_project.apps.ExProjectConfig',
 ]
 
 MIDDLEWARE = [
@@ -137,14 +132,21 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATIC_URL = '/static/'
 
-# push必须
+# 部署必须
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, '/static/'),
 )
 
-# push需注释
+DEBUG = False
+ALLOWED_HOSTS = ['*']
+
+###############################
+
+# DEBUG = True
+# ALLOWED_HOSTS = []
+#
 # STATICFILES_DIRS = (
 #     os.path.join(BASE_DIR, 'static'),
 # )
