@@ -139,8 +139,8 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, '/static/'),
 )
 
-DEBUG = False
-ALLOWED_HOSTS = ['*']
+DEBUG = True
+ALLOWED_HOSTS = []
 
 ###############################
 
