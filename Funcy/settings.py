@@ -140,7 +140,7 @@ STATICFILES_DIRS = (
 )
 
 DEBUG = False
-ALLOWED_HOSTS = ['wangbo.ink']
+ALLOWED_HOSTS = ['*']
 
 ###############################
 
